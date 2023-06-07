@@ -1,43 +1,40 @@
-import * as THREE from 'three';
+import * as THREE from 'https://unpkg.com/three@0.127.0/build/three.module.js';
+const canvas = document.querySelector('.webgl')
+const scene = new THREE.Scene()
 
- const renderer = new THREE.WebGLRenderer();
+const geometry = new THREE.BoxGeometry(1,1,1)
+const material = new THREE.MeshBasicMaterial({
+   color: 0x00ff00
+})
 
- renderer.setSize(window.innerWidth, window.innerHeight);
+const mesh = new THREE.Mesh(geometry, material)
+scene.add(mesh)
 
- document.body.appendChild(renderer.domElement);
 
- const scene = new THREE.Scene();
+//boilerplate
 
- const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
+const sizes = {
+   width: window.innerWidth,
+   height: window.innerHeight
+}
 
-const axesHelper = new THREE.AxesHelper(5);
-scene.add(axesHelper);
+const camera = new THREE.PerspectiveCamera(75, sizes.width/sizes.height, 0.1, 100)
 
-camera.position.set(0,2,5);
+camera.position.set(0,1,2)
+scene.add(camera)
 
-const boxGeometry = new THREE.BoxGeometry();
-const boxMaterial = new THREE.MeshBasicMaterial({color: 0x0F0FFF});
-const box = new THREE.Mesh(boxGeometry, boxMaterial);
-scene.add(box);
+const renderer = new THREE.WebGLRenderer({
+   canvas: canvas
+})
+
+renderer.setSize(sizes.width, sizes.height)
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+renderer.shadowMap.enabled = true
 
 function animate(){
 
-    box.rotation.x += .01;
-    box.rotation.y += .01;
-    renderer.render(scene, camera);
-
+       requestAnimationFrame(animate)
+       renderer.render(scene, camera)
 }
 
-
-
-
-
-
-renderer.render(scene, camera);
-
-renderer.setAnimationLoop(animate);
+animate()
