@@ -1,0 +1,66 @@
+body {
+    background-color: #add8e6;
+    color: white;
+    text-align: center;
+}
+
+.imageone {
+
+    visibility: hidden;
+    max-width: 10%;
+    max-height: 10%;
+}
+
+.title{
+
+    color: white;
+    text-align: center;
+
+}
+
+.gallery {
+
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+
+}
+
+input {
+    display: none;
+}
+
+label {
+    
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh; 
+
+
+  }
+
+  canvas{
+    display: none;
+  }
+  
+  label:hover {
+    background-color: #0e0e0e;
+    color: rgb(255, 255, 255);
+  }
+  
+  label:active {
+    background-color: #9f9f9f;
+  }
