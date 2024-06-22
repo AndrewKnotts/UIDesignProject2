@@ -1,66 +1,72 @@
 body {
-    background-color: #add8e6;
-    color: white;
-    text-align: center;
+  background-color: #0c0c1b;
+  color: #ffb77d;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  height: 80vh;
 }
 
 .imageone {
-
-    visibility: hidden;
-    max-width: 10%;
-    max-height: 10%;
+  visibility: hidden;
+  max-width: 10%;
+  max-height: 10%;
 }
 
-.title{
-
-    color: white;
-    text-align: center;
-
+.title {
+  color: #b5b1cf;
+  text-align: center;
+  margin-top: 1rem;
 }
 
-.gallery {
-
-    border: 1px solid white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-
+.subtitle {
+  color: rgb(146, 143, 165);
+  text-align: center;
+  margin-top: 0rem;
+  padding-bottom: 1rem;
 }
 
 input {
-    display: none;
+  display: none;
 }
 
 label {
-    
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    color: #000000;
-    background-color: #ffffff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 30px;
-    display: flex;
+  padding: 15px 30px;
+  font-size: 18px;
+  color: #c7c7c7;
+  background-color: #252144;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+}
+
+canvas {
+  display: none;
+  height: 50vh;
+  
+}
+
+#canvas-container {
+  margin-top: 2vh;
+  
+  display: flex;
     justify-content: center;
     align-items: center;
-    height: 5vh; 
-
-
-  }
-
-  canvas{
-    display: none;
-  }
+  height: 100%;
+  width: 100%;
   
-  label:hover {
-    background-color: #0e0e0e;
-    color: rgb(255, 255, 255);
-  }
   
-  label:active {
-    background-color: #9f9f9f;
-  }
+}
+
+label:hover {
+  background-color: #3700b3;
+
+  transform: translateY(-3px);
+}
+
+label:active {
+  background-color: #6200ea;
+ 
+  transform: translateY(0);
+}

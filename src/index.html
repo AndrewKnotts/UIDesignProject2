@@ -3,20 +3,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UIP2</title>
+    <title>Virtual Gallery</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
-    <h1 class="title">Mini Gallery</h1>
-    <p>By Andrew Knotts</p>
+    <h1 class="title">Virtual Gallery</h1>
+    <p class="subtitle">Built by Andrew Knotts. Left click to rotate, right click to pan.</p>
+    
     <img src="" id="imageone" class="imageone">
-    <label for="input-file">update image</label>
+    <label for="input-file">Change Image</label>
     <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" class="button">
-    <canvas class="webgl"></canvas>
-    <script type="module" src="./scripts.js" defer="" class="gallery">
-</script>
+    <div id="canvas-container">
+        <canvas class="webgl"></canvas>
+        <script type="module" src="./scripts.js" defer="" class="gallery">
+        </script>
+    </div>
+   
 </body>
 </html>
 

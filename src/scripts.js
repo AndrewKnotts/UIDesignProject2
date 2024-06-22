@@ -4,9 +4,8 @@ import {OrbitControls} from 'https://unpkg.com/three@0.127.0/examples/jsm/contro
 
 import {GLTFLoader} from 'https://unpkg.com/three@0.127.0/examples/jsm/loaders/GLTFLoader.js';
 
-//import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 
-var renderer;
+var renderer = new THREE.WebGLRenderer( { alpha: true } );
 
 var camera;
 
@@ -14,34 +13,13 @@ var scene;
 
 const sizes = {
    width: window.innerWidth,
-   height: window.innerHeight
+   height: window.innerHeight 
 }
 
 let cube;
 
 let cube2;
 
-/*
-//crazy stuff
-
-let imageone = document.getElementById("imageone")
-let inputFile = document.getElementById("input-file")
-
-inputFile.onchange = function(){
-   
-   imageone.src = URL.createObjectURL(inputFile.files[0])
-
-   texture = new THREE.TextureLoader().load(document.getElementById("imageone").src)
-   texture.needsUpdate = true;
-   cubeMat = new THREE.MeshStandardMaterial({
-      map : texture
-     })
-     cube.material.map.needsUpdate = true;
-}
-
-//woah
-
-*/
 let inputFile = document.getElementById("input-file")
 
 init();
@@ -53,12 +31,12 @@ init();
 
 //loader stuff
 
-//let defaultimg = './img/capytexture.jpg'
 
 function init() {
 
-camera = new THREE.PerspectiveCamera(60, sizes.width/sizes.height, 0.1, 100)
-camera.position.set(40,20,40)
+camera = new THREE.PerspectiveCamera(45, sizes.width/sizes.height, .1, 1000)
+camera.position.set(40,40,40)
+
 
 
 
@@ -70,40 +48,42 @@ scene = new THREE.Scene()
 
 scene.add(camera)
 var loader = new THREE.TextureLoader();
-var texture = loader.load('img/capytexture.jpg')
+var texture = loader.load('img/MonaLisaImage.png')
 
 var cubeGeo = new THREE.BoxGeometry(4,4,4)
 var cubeMat = new THREE.MeshStandardMaterial({
    map:texture 
 })
 
-var cubeCanvas = new THREE.BoxGeometry(4,4,.5)
+var cubeCanvas = new THREE.BoxGeometry(8,8,.3)
 
 inputFile.onchange = function(){
    
    cubeMat.map = loader.load(URL.createObjectURL(inputFile.files[0]))
 
 }
-cube = new THREE.Mesh(cubeGeo, cubeMat)
+//cube = new THREE.Mesh(cubeGeo, cubeMat)
 cube2 = new THREE.Mesh(cubeCanvas, cubeMat)
-scene.add(cube)
+//scene.add(cube)
 scene.add(cube2)
-cube.position.set(0,30,0)
+//cube.position.set(0,30,0)
 cube2.position.set(0,10,-9.5)
-cube.castShadow = true
+//cube.castShadow = true
 cube2.castShadow = true
 
 const ambient = new THREE.AmbientLight(0x333333)
 scene.add(ambient)
 
+   const container = document.getElementById('canvas-container');
 
-renderer = new THREE.WebGLRenderer( { antialias: true } );
-		renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setSize( window.innerWidth, window.innerHeight );
+   renderer = new THREE.WebGLRenderer( { antialias: true } );
+	renderer.setPixelRatio( window.devicePixelRatio );
+   renderer.setSize(container.clientWidth, container.clientHeight);
+   
     document.body.appendChild( renderer.domElement );
     renderer.shadowMap.enabled = true
-    renderer.setClearColor(0xadd8e6);
-
+    renderer.setClearColor( 0x0c0c1b, 1 );
+    container.appendChild(renderer.domElement);
 
 
 //end of loader stuff 
@@ -112,8 +92,8 @@ renderer = new THREE.WebGLRenderer( { antialias: true } );
 
 
 
-const planeGeometry = new THREE.BoxGeometry(20,20, 1)
-const planeMaterial = new THREE.MeshStandardMaterial({color: 0xfffff0, side: THREE.DoubleSide})
+const planeGeometry = new THREE.BoxGeometry(21,21, 1)
+const planeMaterial = new THREE.MeshStandardMaterial({color: 0xb5b1cf, side: THREE.DoubleSide})
 const plane = new THREE.Mesh(planeGeometry, planeMaterial)
 scene.add(plane)
 plane.rotation.x = -.5 * Math.PI
@@ -140,7 +120,7 @@ directionalLight.position.set(50, 40, 30)
 directionalLight.castShadow = true;
 directionalLight.shadow.camera.bottom = -12;
 
-const spotlight = new THREE.SpotLight(0xFFFFf0)
+const spotlight = new THREE.SpotLight(0xfffffd)
 scene.add(spotlight)
 spotlight.position.set(0,150,150)
 spotlight.castShadow = true;
@@ -206,8 +186,8 @@ orbit.update()
 
 function animate(){
 
-      cube.rotation.y += .005;
-      cube.rotation.x += .005;
+     // cube.rotation.y += .005;
+     // cube.rotation.x += .005;
 
       requestAnimationFrame(animate)
       renderer.render(scene, camera)
